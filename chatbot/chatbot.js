@@ -9,9 +9,6 @@ const credentials = {
 }
 const sessionClient = new dialogflow.SessionsClient({ projectId, credentials });
 const sessionPath = sessionClient.sessionPath(projectId, config.dialogFlowSessionID)
-
-console.log(projectId, credentials, config.dialogFlowSessionID, sessionPath)
-
 module.exports = {
     textQuery: async function (text, parameters = {}) {
         let self = module.exports;
