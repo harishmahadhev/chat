@@ -1,7 +1,13 @@
 'use strict'
 const config = require('../config/keys')
 const dialogflow = require('dialogflow')
-const sessionClient = new dialogflow.SessionsClient();
+const structjson = require('./structJson')
+const projectID = config.googleProjectID;
+const credentials = {
+    client_email: config.googleClientEmail,
+    private_key: config.googlePrivateKey,
+}
+const sessionClient = new dialogflow.SessionsClient({ projectID, credentials });
 const sessionPath = sessionClient.sessionPath(config.googleProjectID, config.dialogFlowSessionID)
 
 module.exports = {
@@ -37,7 +43,7 @@ module.exports = {
                 event: {
                     // The query to send to the dialogflow agent
                     name: event,
-                    parameters: parameters,
+                    parameters: structjson.jsonToStructProto(parameters),
                     // The language used by the client (en-US)
                     languageCode: config.dialogFlowSessionLanguageCode,
                 },
