@@ -1,5 +1,5 @@
 const private_key = process.env.GOOGLE_PRIVATE_KEY;
-const googlePrivatekey = private_key.replace("\\n", "\n")
+const googlePrivatekey = private_key.replaceAll("\\n", "\n")
 module.exports = {
     googleProjectID: process.env.GOOGLE_PROJECT_ID,
     dialogFlowSessionID: process.env.DIALOGFLOW_SESSION_ID,
