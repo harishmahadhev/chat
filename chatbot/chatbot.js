@@ -1,4 +1,5 @@
 'use strict'
+const { Registration } = require("../database/models/Registration")
 const config = require('../config/keys')
 const dialogflow = require('dialogflow')
 const structjson = require('./structJson')
@@ -30,8 +31,7 @@ module.exports = {
         };
         let responses = await sessionClient.detectIntent(request);
         responses = await self.handleAction(responses)
-        const result = responses[0].queryResult;
-        return result;
+        return responses;
     },
 
     eventQuery: async function (event, userId, parameters = {}) {
@@ -51,8 +51,35 @@ module.exports = {
         };
         let responses = await sessionClient.detectIntent(request);
         responses = await self.handleAction(responses)
-        const result = responses[0].queryResult;
-        return result;
+        return responses;
     },
-    handleAction: (responses) => responses
+    handleAction: (responses) => {
+        let queryResult = responses[0].queryResult;
+        let self = module.exports;
+
+        switch (queryResult.action) {
+            case 'recommendcourses-yes':
+                if (queryResult.allRequiredParamsPresent) {
+                    self.saveRegistration(queryResult.parameters.fields)
+                }
+                break;
+        }
+
+        return queryResult;
+    },
+    saveRegistration: async (fields) => {
+        const registration = new Registration({
+            name: fields.name.stringValue,
+            address: fields.address.stringValue,
+            phone: fields.phone.stringValue,
+            email: fields.email.stringValue,
+            dateSent: Date.now()
+        })
+        try {
+            let reg = await registration.save();
+            console.log(reg);
+        } catch (err) {
+            console.log(err)
+        }
+    }
 }
