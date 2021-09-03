@@ -10,7 +10,7 @@ const credentials = {
     private_key: config.googlePrivateKey,
 }
 const sessionClient = new dialogflow.SessionsClient({ projectId, credentials });
-console.log(projectId, credentials)
+
 module.exports = {
     textQuery: async function (text, userId, parameters = {}) {
         let self = module.exports;
@@ -36,6 +36,7 @@ module.exports = {
 
     eventQuery: async function (event, userId, parameters = {}) {
         const sessionPath = sessionClient.sessionPath(projectId, sessionId + userId)
+        console.log(sessionClient, projectId, credentials)
         let self = module.exports;
         const request = {
             session: sessionPath,
