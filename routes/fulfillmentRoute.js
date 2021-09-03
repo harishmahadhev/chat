@@ -5,7 +5,7 @@ const fulfillmentRouter = Router()
 
 fulfillmentRouter.route("/")
     .get((req, res) => {
-        res.write("Hi")
+        res.send("HI")
     })
     .post(async (req, res) => {
         const agent = new WebhookClient({ request: req, response: res })
