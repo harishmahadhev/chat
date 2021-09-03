@@ -1,7 +1,8 @@
 const express = require('express');
-const queryRouter = require("./queryRoute.js")
 const app = express();
+const cors = require('cors')
 app.use(express.json())
+app.use(cors())
 require('./routes/dialogFlowRoutes.js')(app)
 const PORT = process.env.PORT || 5000
 
