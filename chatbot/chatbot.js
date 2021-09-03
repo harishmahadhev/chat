@@ -10,7 +10,7 @@ const credentials = {
     private_key: config.googlePrivateKey,
 }
 const sessionClient = new dialogflow.SessionsClient({ projectId, credentials });
-
+console.log(projectId, credentials)
 module.exports = {
     textQuery: async function (text, userId, parameters = {}) {
         let self = module.exports;
@@ -49,19 +49,16 @@ module.exports = {
                 },
             },
         };
-        try {
-            let responses = await sessionClient.detectIntent(request);
-            console.log(responses);
-            responses = await self.handleAction(responses)
-            return responses;
-        }
-        catch (err) { console.log(err) }
+
+        let responses = await sessionClient.detectIntent(request);
+        responses = await self.handleAction(responses)
+        return responses;
+
 
     },
     handleAction: (responses) => {
         let queryResult = responses[0].queryResult;
         let self = module.exports;
-        console.log(queryResult)
         switch (queryResult.action) {
             case 'recommendcourses-yes':
                 if (queryResult.allRequiredParamsPresent) {
