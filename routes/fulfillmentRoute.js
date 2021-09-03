@@ -4,9 +4,6 @@ const { Demand, Coupon } = require('../database/models/Registration');
 const fulfillmentRouter = Router()
 
 fulfillmentRouter.route("/")
-    .get((req, res) => {
-        res.send("HI")
-    })
     .post(async (req, res) => {
         const agent = new WebhookClient({ request: req, response: res })
         function jiju(agent) {

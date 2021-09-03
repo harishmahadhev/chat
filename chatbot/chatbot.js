@@ -64,7 +64,6 @@ module.exports = {
                 }
                 break;
         }
-
         return queryResult;
     },
     saveRegistration: async (fields) => {
