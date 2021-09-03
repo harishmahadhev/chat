@@ -3,8 +3,10 @@ const queryRouter = express.Router()
 const chatbot = require('../chatbot/chatbot.js')
 
 queryRouter.route("/df_event_query").post(async (req, res) => {
+    console.log(req)
     try {
         let result = await chatbot.eventQuery(req.body.event, req.body.userId, req.body.parameters);
+        console.log(result)
         res.send(result);
     } catch (error) {
         res.send(error);
