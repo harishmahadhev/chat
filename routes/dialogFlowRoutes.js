@@ -1,4 +1,4 @@
-const fulfillmentRouter = require("./fulfillmentRoute")
+// const fulfillmentRouter = require("./fulfillmentRoute")
 const queryRouter = require("./queryRoute")
 module.exports = app => {
     app.get("/", (req, res) => {
