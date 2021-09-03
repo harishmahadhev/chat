@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "React bot for webpage",
   "main": "index.js",
+  "engines": {
+    "node": "9.7.1",
+    "npm": "6.4.1"
+  },
   "scripts": {
     "start": "node index.js",
     "backend": "nodemon index.js",
@@ -12,14 +16,17 @@
   "author": "Harish",
   "license": "ISC",
   "dependencies": {
-    "actions-on-google": "^3.0.0",
+    "actions-on-google": "^2.14.0",
+    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
-    "dialogflow": "^1.2.0",
+    "dialogflow": "^0.13.0",
+    "dialogflow-fulfillment": "^0.6.1",
     "express": "^4.17.1",
-    "mongoose": "^6.0.4"
+    "google-oauth-jwt": "^0.2.0",
+    "mongoose": "^5.7.8"
   },
   "devDependencies": {
-    "concurrently": "^6.2.1",
-    "nodemon": "^2.0.12"
+    "concurrently": "^5.0.0",
+    "nodemon": "^1.19.4"
   }
 }
