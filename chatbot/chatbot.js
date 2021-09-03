@@ -36,7 +36,6 @@ module.exports = {
 
     eventQuery: async function (event, userId, parameters = {}) {
         const sessionPath = sessionClient.sessionPath(projectId, sessionId + userId)
-        console.log(projectId, sessionId, userId)
         let self = module.exports;
         const request = {
             session: sessionPath,
@@ -50,9 +49,9 @@ module.exports = {
                 },
             },
         };
-        console.log(request)
         try {
             let responses = await sessionClient.detectIntent(request);
+            console.log(responses);
             responses = await self.handleAction(responses)
             return responses;
         }
