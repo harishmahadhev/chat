@@ -36,7 +36,7 @@ module.exports = {
 
     eventQuery: async function (event, userId, parameters = {}) {
         const sessionPath = sessionClient.sessionPath(projectId, sessionId + userId)
-        console.log(sessionClient, projectId, credentials)
+
         let self = module.exports;
         const request = {
             session: sessionPath,
