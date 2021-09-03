@@ -9,16 +9,6 @@ app.use(cors())
 require('./database/db_connection')
 require('./routes/dialogFlowRoutes.js')(app)
 
-if (process.env.NODE_ENV === 'production') {
-    // js and css files
-    app.use(express.static('client/build'));
-
-    // index.html for all page routes
-    const path = require('path');
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-    });
-}
 
 app.listen(PORT, () => {
     console.log(`Server Started at PORT ${PORT}`)
