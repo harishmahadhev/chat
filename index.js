@@ -1,13 +1,14 @@
 const express = require('express');
 const app = express();
 const cors = require('cors')
-
+const fulfillmentRouter = require("./routes/fulfillmentRoute")
+const queryRouter = require("./routes/queryRoute")
+require('./database/db_connection')
 const PORT = process.env.PORT || 5000
-
 app.use(express.json())
 app.use(cors())
-require('./database/db_connection')
-require('./routes/dialogFlowRoutes.js')(app)
+app.use("/api", queryRouter)
+app.use("/", fulfillmentRouter)
 
 
 app.listen(PORT, () => {
