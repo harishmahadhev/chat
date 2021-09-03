@@ -37,7 +37,6 @@ module.exports = {
     eventQuery: async function (event, userId, parameters = {}) {
         const sessionPath = sessionClient.sessionPath(projectId, sessionId + userId)
         let self = module.exports;
-        console.log(event)
         const request = {
             session: sessionPath,
             queryInput: {
@@ -62,7 +61,7 @@ module.exports = {
     handleAction: (responses) => {
         let queryResult = responses[0].queryResult;
         let self = module.exports;
-
+        console.log(queryResult)
         switch (queryResult.action) {
             case 'recommendcourses-yes':
                 if (queryResult.allRequiredParamsPresent) {
