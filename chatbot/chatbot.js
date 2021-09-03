@@ -50,10 +50,14 @@ module.exports = {
                 },
             },
         };
-        let responses = await sessionClient.detectIntent(request);
-        responses = await self.handleAction(responses)
-        console.log(responses)
-        return responses;
+
+        try {
+            let responses = await sessionClient.detectIntent(request);
+            responses = await self.handleAction(responses)
+            return responses;
+        }
+        catch (err) { console.log(err) }
+
     },
     handleAction: (responses) => {
         let queryResult = responses[0].queryResult;
