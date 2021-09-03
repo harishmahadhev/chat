@@ -2,4 +2,3 @@ node_modules
 .idea
 keys
 config/dev.js
-client
