@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "React bot for webpage",
   "main": "index.js",
-  "engines": {
-    "node": "6"
-  },
   "scripts": {
     "start": "node index.js",
     "backend": "nodemon index.js",
@@ -19,8 +16,7 @@
     "cors": "^2.8.5",
     "dialogflow": "^1.2.0",
     "express": "^4.17.1",
-    "mongoose": "^6.0.4",
-    "dialogflow-fulfillment": "^0.6.1"
+    "mongoose": "^6.0.4"
   },
   "devDependencies": {
     "concurrently": "^6.2.1",
