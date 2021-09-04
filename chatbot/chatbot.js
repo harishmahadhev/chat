@@ -56,17 +56,17 @@ module.exports = {
     },
     handleAction: (responses) => {
 
-        let queryResult = responses[0].queryResult;
-        console.log("Entering into handleAction")
-        let self = module.exports;
-        switch (queryResult.action) {
-            case 'recommendcourses-yes':
-                if (queryResult.allRequiredParamsPresent) {
-                    self.saveRegistration(queryResult.parameters.fields)
-                }
-                break;
-        }
-        return queryResult;
+        // let queryResult = responses[0].queryResult;
+        // console.log("Entering into handleAction")
+        // let self = module.exports;
+        // switch (queryResult.action) {
+        //     case 'recommendcourses-yes':
+        //         if (queryResult.allRequiredParamsPresent) {
+        //             self.saveRegistration(queryResult.parameters.fields)
+        //         }
+        //         break;
+        // }
+        return responses;
     },
     saveRegistration: async (fields) => {
         const registration = new Registration({
