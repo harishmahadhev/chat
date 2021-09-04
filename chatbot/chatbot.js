@@ -35,7 +35,6 @@ module.exports = {
     },
 
     eventQuery: async function (event, parameters = {}) {
-        console.log("ENtering into event query")
         let self = module.exports;
         const request = {
             session: sessionPath,
@@ -56,16 +55,16 @@ module.exports = {
     },
     handleAction: (responses) => {
 
-        // let queryResult = responses[0].queryResult;
-        // console.log("Entering into handleAction")
-        // let self = module.exports;
-        // switch (queryResult.action) {
-        //     case 'recommendcourses-yes':
-        //         if (queryResult.allRequiredParamsPresent) {
-        //             self.saveRegistration(queryResult.parameters.fields)
-        //         }
-        //         break;
-        // }
+        let queryResult = responses[0].queryResult;
+        console.log("Entering into handleAction")
+        let self = module.exports;
+        switch (queryResult.action) {
+            case 'recommendcourses-yes':
+                if (queryResult.allRequiredParamsPresent) {
+                    self.saveRegistration(queryResult.parameters.fields)
+                }
+                break;
+        }
         return responses;
     },
     saveRegistration: async (fields) => {
