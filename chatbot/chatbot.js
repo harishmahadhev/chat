@@ -5,6 +5,7 @@ const dialogflow = require('dialogflow')
 const structjson = require('./structJson')
 const projectId = config.googleProjectID;
 const sessionId = config.dialogFlowSessionID
+
 const credentials = {
     client_email: config.googleClientEmail,
     private_key: config.googlePrivateKey,
@@ -52,7 +53,7 @@ module.exports = {
             },
         };
 
-        let responses = await sessionClient.detectIntent(request); console.log("GEtting response from Detect indent")
+        let responses = await sessionClient.detectIntent(request);
         responses = self.handleAction(responses)
         return responses;
     },
