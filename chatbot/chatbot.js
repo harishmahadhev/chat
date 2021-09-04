@@ -35,6 +35,7 @@ module.exports = {
     },
 
     eventQuery: async function (event, userId, parameters = {}) {
+        console.log("ENtering into event query")
         const sessionPath = sessionClient.sessionPath(projectId, sessionId + userId)
 
         let self = module.exports;
@@ -52,13 +53,16 @@ module.exports = {
         };
 
         let responses = await sessionClient.detectIntent(request);
+        console.log("GEtting response from Detect indent", responses)
         responses = await self.handleAction(responses)
         return responses;
 
 
     },
     handleAction: (responses) => {
+
         let queryResult = responses[0].queryResult;
+        console.log("Entering into handleAction", queryResult)
         let self = module.exports;
         switch (queryResult.action) {
             case 'recommendcourses-yes':

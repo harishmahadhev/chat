@@ -8,6 +8,7 @@ fulfillmentRouter.route("/")
         res.send("Hi")
     })
     .post(async (req, res) => {
+        console.log("Entering into Fullfillment route")
         const agent = new WebhookClient({ request: req, response: res })
         function jiju(agent) {
             agent.add("Welcome to my snoopy fulfillment")
@@ -23,6 +24,7 @@ fulfillmentRouter.route("/")
                     demand.save();
                 }
             });
+            console.log("Entered learning function")
             let responseText = `You want to learn about ${course}`
 
             let coupon = await Coupon.findOne({ course: course });
