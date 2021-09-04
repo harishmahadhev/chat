@@ -11,11 +11,10 @@ const credentials = {
     private_key: config.googlePrivateKey,
 }
 const sessionClient = new dialogflow.SessionsClient({ projectId, credentials });
-
+const sessionPath = sessionClient.sessionPath(projectId, sessionId)
 module.exports = {
-    textQuery: async function (text, userId, parameters = {}) {
+    textQuery: async function (text, parameters = {}) {
         let self = module.exports;
-        const sessionPath = sessionClient.sessionPath(projectId, sessionId + userId)
         const request = {
             session: sessionPath,
             queryInput: {
@@ -35,10 +34,8 @@ module.exports = {
         return responses;
     },
 
-    eventQuery: async function (event, userId, parameters = {}) {
+    eventQuery: async function (event, parameters = {}) {
         console.log("ENtering into event query")
-        const sessionPath = sessionClient.sessionPath(projectId, sessionId + userId)
-
         let self = module.exports;
         const request = {
             session: sessionPath,
