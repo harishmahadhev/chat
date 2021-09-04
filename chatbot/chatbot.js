@@ -51,7 +51,8 @@ module.exports = {
                 },
             },
         };
-
+        console.log(request)
+        console.log(sessionClient)
         let responses = await sessionClient.detectIntent(request);
         console.log("GEtting response from Detect indent", responses)
         responses = await self.handleAction(responses)
