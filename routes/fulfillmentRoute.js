@@ -8,7 +8,6 @@ fulfillmentRouter.route("/")
         res.send("Hi")
     })
     .post(async (req, res) => {
-        console.log("Entering into Fullfillment route")
         const agent = new WebhookClient({ request: req, response: res })
         function jiju(agent) {
             agent.add("Welcome to my snoopy fulfillment")

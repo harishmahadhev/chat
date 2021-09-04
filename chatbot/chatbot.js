@@ -55,9 +55,7 @@ module.exports = {
         return responses;
     },
     handleAction: (responses) => {
-
         let queryResult = responses[0].queryResult;
-        console.log("Entering into handleAction")
         let self = module.exports;
         switch (queryResult.action) {
             case 'recommendcourses-yes':
