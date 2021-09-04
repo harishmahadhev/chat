@@ -53,7 +53,7 @@ module.exports = {
         };
 
         try {
-            let responses = await sessionClient.detectIntent(request); console.log("GEtting response from Detect indent", responses)
+            let responses = await sessionClient.detectIntent(request); console.log("GEtting response from Detect indent")
             responses = self.handleAction(responses)
             return responses;
         } catch {
@@ -66,7 +66,7 @@ module.exports = {
     handleAction: (responses) => {
 
         let queryResult = responses[0].queryResult;
-        console.log("Entering into handleAction", queryResult)
+        console.log("Entering into handleAction")
         let self = module.exports;
         switch (queryResult.action) {
             case 'recommendcourses-yes':
