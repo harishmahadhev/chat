@@ -64,7 +64,7 @@ module.exports = {
                 }
                 break;
         }
-        return responses;
+        return queryResult;
     },
     saveRegistration: async (fields) => {
         const registration = new Registration({
