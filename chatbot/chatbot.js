@@ -12,9 +12,9 @@ const credentials = {
 const sessionClient = new dialogflow.SessionsClient({ projectId, credentials });
 
 module.exports = {
-    textQuery: async function (text, userId, parameters = {}) {
+    textQuery: async function (text, parameters = {}) {
         let self = module.exports;
-        const sessionPath = sessionClient.sessionPath(projectId, sessionId + userId)
+        const sessionPath = sessionClient.sessionPath(projectId, sessionId)
         const request = {
             session: sessionPath,
             queryInput: {
@@ -34,9 +34,9 @@ module.exports = {
         return responses;
     },
 
-    eventQuery: async function (event, userId, parameters = {}) {
+    eventQuery: async function (event, parameters = {}) {
         console.log("ENtering into event query")
-        const sessionPath = sessionClient.sessionPath(projectId, sessionId + userId)
+        const sessionPath = sessionClient.sessionPath(projectId, sessionId)
 
         let self = module.exports;
         const request = {
@@ -55,7 +55,7 @@ module.exports = {
         console.log(sessionClient)
         let responses = await sessionClient.detectIntent(request);
         console.log("GEtting response from Detect indent", responses)
-        responses = await self.handleAction(responses)
+        responses = self.handleAction(responses)
         return responses;
 
 
