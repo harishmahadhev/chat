@@ -52,16 +52,9 @@ module.exports = {
             },
         };
 
-        try {
-            let responses = await sessionClient.detectIntent(request); console.log("GEtting response from Detect indent")
-            responses = self.handleAction(responses)
-            return responses;
-        } catch {
-            console.log("ERROR", err)
-        }
-
-
-
+        let responses = await sessionClient.detectIntent(request); console.log("GEtting response from Detect indent")
+        responses = self.handleAction(responses)
+        return responses;
     },
     handleAction: (responses) => {
 
